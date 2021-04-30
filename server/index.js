@@ -23,4 +23,8 @@ app.use(express.json());
 app.use('/api/user', authRoute);
 app.use('/api/test', test);
 
+app.get('/', (req,res) => {
+    res.send("Welcome to alt-j backend");
+});
+
 app.listen(port, () => console.log(`Connected to port ${port}`));
