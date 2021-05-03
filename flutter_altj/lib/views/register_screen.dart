@@ -1,5 +1,11 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -7,6 +13,23 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+
+  Future<void> storeUser() {
+    return users.add({
+      'email': _emailController.text,
+      'username' : _nameController.text,
+      'schedule': [{}],
+      'tasks': [{}],
+      'meeting': [{}]
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40, top: 20),
                     child: TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.email_outlined,
@@ -98,6 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40),
                     child: TextField(
+                      controller: _nameController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.person_outline,
@@ -117,6 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
@@ -137,6 +163,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40),
                     child: TextField(
+                      controller: _confirmPasswordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
@@ -169,7 +196,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                  onPressed: () {},
+                  onPressed: () async{
+                    try {
+                      storeUser();
+                      await _firebaseAuth.createUserWithEmailAndPassword(
+                        email: _emailController.text, password: _passwordController.text
+                      ).then((value) => {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Register Success"), duration: Duration(seconds: 2),)),
+                        Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/login'))
+                      });
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: e.message.text,));
+                    }
+                  },
                 ),
               ),
               Column(
@@ -196,7 +235,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/login');
+                      },
                     ),
                   ),
                 ],

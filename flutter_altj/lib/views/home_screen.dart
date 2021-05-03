@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 DateTime now = new DateTime.now();
@@ -7,8 +9,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+
   String day = "${now.day < 10 ? "0"+now.day.toString() : now.day.toString()}";
   String month = "${now.month < 10 ? "0"+now.month.toString() : now.month.toString()}";
+
+  DocumentSnapshot userObject;
+
+  Future<void> getUser() async{
+    final documents = await db.collection('users').where('email', isEqualTo: _firebaseAuth.currentUser.email.toString()).get();
+    print(documents.docs.first.data());
+  }
+  @override
+  void initState(){
+    // TODO: implement initState
+    super.initState();
+    getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       width: 250,
                       height: 28,
-                      child: Text(
-                        "Hello, Username!",
-                        style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 23, color: Color(0xFFD78B0D)),
-                      ),
+                      child: Text.rich(
+                        TextSpan(
+                          text: "Hello, ${_firebaseAuth.currentUser.email.substring(0,12)}!",
+                          style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 23, color: Color(0xFFD78B0D)),
+                        )
+                      )
                     ),
                     GestureDetector(
                       onTap: (){},

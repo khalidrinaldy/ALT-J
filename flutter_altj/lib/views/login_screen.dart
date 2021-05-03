@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -6,6 +11,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences localStorage;
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
+
+  Future<void> saveUser() async{
+    await init();
+    localStorage.setString('email', _emailController.text.toString());
+    localStorage.setString('password', _passwordController.text.toString());
+    print(localStorage.getString('email'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40, top: 20),
                     child: TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.email_outlined,
@@ -58,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin: EdgeInsets.only(left: 40, right: 40),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
@@ -90,7 +114,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                  onPressed: () {},
+                  onPressed: () async{
+                    try {
+                      saveUser();
+                      await _firebaseAuth.signInWithEmailAndPassword(
+                        email: _emailController.text, password: _passwordController.text
+                      ).then((value) => {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Success"), duration: Duration(seconds: 2),)),
+                        Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/home'))
+                      });
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: e.message,));
+                    }
+                  },
                 ),
               ),
               Row(
@@ -106,7 +142,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/register');
+                    },
                     child: Container(
                       height: 15,
                       width: 70,
