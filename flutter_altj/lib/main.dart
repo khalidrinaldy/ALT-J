@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       onGenerateRoute: Routes.generateRoute,
       theme: ThemeData(
-        primaryColor: Color(0xFFEE9B0F)
+        primaryColor: Color(0xFFEE9B0F),
+        accentColor: Color(0xFFEE9B0F)
       ),
       debugShowCheckedModeBanner: false,
     );

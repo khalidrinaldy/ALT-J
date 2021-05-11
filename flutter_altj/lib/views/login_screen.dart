@@ -12,21 +12,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  SharedPreferences localStorage;
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-
-  Future init() async {
-    localStorage = await SharedPreferences.getInstance();
-  }
-
-  Future<void> saveUser() async{
-    await init();
-    localStorage.setString('email', _emailController.text.toString());
-    localStorage.setString('password', _passwordController.text.toString());
-    print(localStorage.getString('email'));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
                   onPressed: () async{
                     try {
-                      saveUser();
                       await _firebaseAuth.signInWithEmailAndPassword(
                         email: _emailController.text, password: _passwordController.text
                       ).then((value) => {
