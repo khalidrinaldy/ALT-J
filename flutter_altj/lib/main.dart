@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Routes.generateRoute,
       theme: ThemeData(
         primaryColor: Color(0xFFEE9B0F),
-        accentColor: Color(0xFFEE9B0F)
+        accentColor: Color(0xFFEE9B0F),
+        fontFamily: "Montserrat"
       ),
       debugShowCheckedModeBanner: false,
     );

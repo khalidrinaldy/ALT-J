@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_altj/views/activities/add_tasks.dart';
+import 'package:flutter_altj/views/activity_screen.dart';
 import 'package:flutter_altj/views/home_screen.dart';
 import 'package:flutter_altj/views/login_screen.dart';
 import 'package:flutter_altj/views/profile_screen.dart';
@@ -23,6 +25,12 @@ class Routes {
         break;
       case '/profile':
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+        break;
+      case '/activity':
+        return MaterialPageRoute(builder: (_) => ActivityScreen());
+        break;
+      case '/addTask':
+        return MaterialPageRoute(builder: (_) => AddTaskScreen());
         break;
       default:
         return _errorRoute();

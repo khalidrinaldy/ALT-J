@@ -377,6 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )]
                     ),
                     child: ElevatedButton(
+                      onPressed: () => Navigator.pushNamed(context, '/activity'),
                       child: Text(
                         "Manage Activity",
                         style: TextStyle(fontFamily: "Montserrat", fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xFFFFFDF9)),
