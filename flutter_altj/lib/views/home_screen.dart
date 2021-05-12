@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 23, color: Color(0xFFD78B0D)),
                       )),
                   Container(
-                    height: 350,
+                    height: 400,
                     child: ListView(
                       children: [
                         Container(

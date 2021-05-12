@@ -19,7 +19,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2025));
-    if (picked != null && picked != DateTime.now()) {
+    if (picked != null) {
       setState(() {
         dateInput = picked;
       });
@@ -28,12 +28,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   selectTime(BuildContext context) async {
     final TimeOfDay picked = await showTimePicker(context: context, initialTime: TimeOfDay.now());
-    if (picked != null && picked != TimeOfDay.now()) {
+    if (picked != null) {
       setState(() {
         timeInput = picked;
       });
     }
-    print(picked);
   }
 
   addTask(AsyncSnapshot<QuerySnapshot> snapshot) async {

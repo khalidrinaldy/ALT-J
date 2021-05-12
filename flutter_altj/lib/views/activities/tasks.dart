@@ -45,6 +45,7 @@ class _TasksScreenState extends State<TasksScreen> {
               tasks.add(task);
             }
             tasks.sort((a,b) => a.deadline.compareTo(b.deadline));
+            tasks = tasks.where((item) => item.deadline.seconds > Timestamp.fromDate(DateTime.now()).seconds).toList();
 
             return ListView.builder(
               itemCount: tasks.length,
@@ -119,7 +120,7 @@ class _TasksScreenState extends State<TasksScreen> {
           Icons.add,
           size: 35,
         ),
-        onPressed: () => Navigator.pushNamed(context, '/addTask'),
+        onPressed: () => Navigator.pushNamed(context, '/addTask').then((value) => setState(() {})),
       ),
     );
   }
