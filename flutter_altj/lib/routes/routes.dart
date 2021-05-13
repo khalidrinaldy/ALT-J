@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_altj/views/activities/add_meeting.dart';
+import 'package:flutter_altj/views/activities/add_schedule.dart';
 import 'package:flutter_altj/views/activities/add_tasks.dart';
 import 'package:flutter_altj/views/activity_screen.dart';
 import 'package:flutter_altj/views/home_screen.dart';
@@ -35,6 +36,9 @@ class Routes {
         break;
       case '/addMeeting':
         return MaterialPageRoute(builder: (_) => AddMeetingScreen());
+        break;
+      case '/addSchedule':
+        return MaterialPageRoute(builder: (_) => AddScheduleScreen());
         break;
       default:
         return _errorRoute();
