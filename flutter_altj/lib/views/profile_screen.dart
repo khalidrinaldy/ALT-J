@@ -48,10 +48,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> logOut(BuildContext context) async {
-    await firebaseAuth.signOut().then((value) => Navigator.pushReplacementNamed(context, '/login'));
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -92,8 +88,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ],
           ),
-          StreamBuilder<QuerySnapshot>(
-              stream: users.where('email', isEqualTo: firebaseAuth.currentUser.email).snapshots(),
+          FutureBuilder<QuerySnapshot>(
+              future: users.where('email', isEqualTo: firebaseAuth.currentUser.email).get(),
               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
                   return Text("Something went wrong");
@@ -172,7 +168,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(52),
                           boxShadow: [BoxShadow(offset: Offset(0, 4), blurRadius: 4, color: Colors.black.withOpacity(0.25))]),
                       child: ElevatedButton(
-                        onPressed: () => logOut(context),
+                        onPressed: () async{
+                          await firebaseAuth.signOut().then((value) => {Navigator.pushReplacementNamed(context, '/login')});
+                        },
                         child: Text(
                           "Log Out",
                           style: TextStyle(fontFamily: "Montserrat", fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xFFFFFDF9)),

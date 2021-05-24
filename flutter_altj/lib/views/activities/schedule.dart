@@ -84,156 +84,163 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFFEFACD),
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             width: 81,
-            height: 542.5,
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 0;
-                      title = "Senin";
-                      nameOfDay = "Monday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 0 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "M",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 0 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 0;
+                        title = "Senin";
+                        nameOfDay = "Monday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 0 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "M",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 0 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 1;
-                      title = "Selasa";
-                      nameOfDay = "Tuesday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 1 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "T",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 1 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 1;
+                        title = "Selasa";
+                        nameOfDay = "Tuesday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 1 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "T",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 1 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 2;
-                      title = "Rabu";
-                      nameOfDay = "Wednesday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 2 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "W",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 2 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 2;
+                        title = "Rabu";
+                        nameOfDay = "Wednesday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 2 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "W",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 2 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 3;
-                      title = "Kamis";
-                      nameOfDay = "Thursday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 3 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "T",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 3 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 3;
+                        title = "Kamis";
+                        nameOfDay = "Thursday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 3 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "T",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 3 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 4;
-                      title = "Jumat";
-                      nameOfDay = "Friday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 4 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "F",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 4 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 4;
+                        title = "Jumat";
+                        nameOfDay = "Friday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 4 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "F",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 4 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 5;
-                      title = "Sabtu";
-                      nameOfDay = "Wednesday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 5 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "S",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 5 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 5;
+                        title = "Sabtu";
+                        nameOfDay = "Saturday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 5 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "S",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 5 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _currentDay = 6;
-                      title = "Minggu";
-                      nameOfDay = "Sunday";
-                    });
-                  },
-                  child: Container(
-                    width: 81,
-                    height: 77,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: _currentDay == 6 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                        border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
-                    child: Text(
-                      "S",
-                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 6 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentDay = 6;
+                        title = "Minggu";
+                        nameOfDay = "Sunday";
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: _currentDay == 6 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                      child: Text(
+                        "S",
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 6 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                      ),
                     ),
                   ),
                 ),
@@ -262,11 +269,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 schedules.add(schedule);
               }
               schedules = schedules.where((item) => item.day.toString() == nameOfDay).toList();
-              schedules.sort((a,b) => a.from.compareTo(b.from));
+              schedules.sort((a, b) => a.from.compareTo(b.from));
               print(schedules);
 
               return Container(
-                height: 542.5,
+                height: MediaQuery.of(context).size.height,
                 margin: EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,8 +290,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                       child: Column(
                         children: [
                           Container(
-                            width: 310,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            height: 47,
                             decoration: BoxDecoration(
                                 color: Color(0xFFE7B75A),
                                 border: Border.all(color: Color(0xFFE7B75A), width: 1),
@@ -304,8 +311,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             ),
                           ),
                           Container(
-                            width: 310,
-                            height: 420,
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            height: MediaQuery.of(context).size.height * 0.55,
                             decoration: BoxDecoration(
                                 color: Color(0xFFFEFACD),
                                 border: Border.all(color: Color(0xFFE7B75A), width: 1),
@@ -319,7 +326,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   children: [
                                     Text(
                                       "${schedules[index].from} - ${schedules[index].to}",
-                                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15, color: Color(0xFF614B17)),
+                                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Color(0xFF614B17)),
                                     ),
                                     ConstrainedBox(
                                       constraints: BoxConstraints(minHeight: 18),
@@ -332,25 +339,27 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                                 width: 150,
                                                 child: Text.rich(TextSpan(
                                                   text: schedules[index].course,
-                                                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15, color: Color(0xFF614B17)),
+                                                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Color(0xFF614B17)),
                                                 )),
                                               ),
                                               GestureDetector(
                                                 onTap: () async {
                                                   await users.doc(document[0].id).update({
-                                                    "schedule": FieldValue.arrayRemove([{
-                                                      "course":schedules[index].course,
-                                                      "lecture": schedules[index].lecture,
-                                                      "day": schedules[index].day,
-                                                      "from": schedules[index].from,
-                                                      "to": schedules[index].to
-                                                    }])
+                                                    "schedule": FieldValue.arrayRemove([
+                                                      {
+                                                        "course": schedules[index].course,
+                                                        "lecture": schedules[index].lecture,
+                                                        "day": schedules[index].day,
+                                                        "from": schedules[index].from,
+                                                        "to": schedules[index].to
+                                                      }
+                                                    ])
                                                   });
                                                   setState(() {});
                                                 },
                                                 child: Icon(
                                                   Icons.delete,
-                                                  size: 15,
+                                                  size: 12,
                                                   color: Colors.black26,
                                                 ),
                                               )

@@ -102,16 +102,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                  onPressed: () async{
+                  onPressed: () async {
                     try {
-                      await _firebaseAuth.signInWithEmailAndPassword(
-                        email: _emailController.text, password: _passwordController.text
-                      ).then((value) => {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Success"), duration: Duration(seconds: 2),)),
-                        Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/home'))
-                      });
+                      await _firebaseAuth
+                          .signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text)
+                          .then((value) => {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text("Login Success"),
+                                  duration: Duration(seconds: 2),
+                                )),
+                                Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/home'))
+                              });
                     } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: e.message,));
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text(e.message),
+                              actions: [
+                                TextButton(
+                                  child: Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          });
                     }
                   },
                 ),

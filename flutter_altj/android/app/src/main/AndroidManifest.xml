@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_altj">
    <application
-        android:label="flutter_altj"
+        android:label="ALT-J"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -22,14 +22,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController _nameController = TextEditingController();
 
   Future<void> storeUser() {
-    return users.add({
-      'email': _emailController.text,
-      'username' : _nameController.text,
-      'schedule': [{}],
-      'tasks': [{}],
-      'meeting': [{}]
-    });
+    return users.add({'email': _emailController.text, 'username': _nameController.text, 'schedule': [], 'tasks': [], 'meeting': []});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,17 +191,53 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                  onPressed: () async{
+                  onPressed: () async {
+                    if (_passwordController.text.toString() != _confirmPasswordController.text.toString()) {
+                      return showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text("Your password and confirmation password do not match"),
+                              actions: [
+                                TextButton(
+                                  child: Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          });
+                    }
                     try {
                       storeUser();
-                      await _firebaseAuth.createUserWithEmailAndPassword(
-                        email: _emailController.text, password: _passwordController.text
-                      ).then((value) => {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Register Success"), duration: Duration(seconds: 2),)),
-                        Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/login'))
-                      });
+                      await _firebaseAuth
+                          .createUserWithEmailAndPassword(email: _emailController.text, password: _passwordController.text)
+                          .then((value) => {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text("Register Success"),
+                                  duration: Duration(seconds: 2),
+                                )),
+                                Timer(Duration(seconds: 2), () => Navigator.pushReplacementNamed(context, '/login'))
+                              });
                     } catch (e) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: e.message.text,));
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text(e.message),
+                              actions: [
+                                TextButton(
+                                  child: Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          });
                     }
                   },
                 ),

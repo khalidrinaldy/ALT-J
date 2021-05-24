@@ -44,6 +44,7 @@ class _TasksScreenState extends State<TasksScreen> {
               Task task = Task(t["task_name"], t["course"], t["deadline"], t["bool"]);
               tasks.add(task);
             }
+            
             tasks.sort((a,b) => a.deadline.compareTo(b.deadline));
             tasks = tasks.where((item) => item.deadline.seconds > Timestamp.fromDate(DateTime.now()).seconds).toList();
 

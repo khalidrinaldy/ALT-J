@@ -57,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ]),
           ),
-          StreamBuilder<QuerySnapshot>(
-            stream: users.where('email', isEqualTo: _firebaseAuth.currentUser.email).snapshots(includeMetadataChanges: true),
+          FutureBuilder<QuerySnapshot>(
+            future: users.where('email', isEqualTo: _firebaseAuth.currentUser.email).get(),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasError) {
                 return Text("Something went wrong");
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 23, color: Color(0xFFD78B0D)),
                       )),
                   Container(
-                    height: 400,
+                    height: MediaQuery.of(context).size.height * 0.6,
                     child: ListView(
                       children: [
                         Container(
@@ -212,17 +212,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                       GestureDetector(
-                                        onTap: () {
-                                          users.doc(userDocument[0].id).update({
+                                        onTap: () async{
+                                          await users.doc(userDocument[0].id).update({
                                             "tasks": FieldValue.arrayUnion([
                                               {"task_name": taskName, "course": taskCourse, "deadline": tasks[index]['deadline'], "check": !taskCheck}
                                             ])
                                           });
-                                          users.doc(userDocument[0].id).update({
+                                          await users.doc(userDocument[0].id).update({
                                             "tasks": FieldValue.arrayRemove([
                                               {"task_name": taskName, "course": taskCourse, "deadline": tasks[index]['deadline'], "check": taskCheck}
                                             ])
                                           });
+                                          setState(() {});
                                         },
                                         child: Container(
                                             height: 38,
@@ -327,8 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                       GestureDetector(
-                                        onTap: () {
-                                          users.doc(userDocument[0].id).update({
+                                        onTap: () async{
+                                          await users.doc(userDocument[0].id).update({
                                             "meeting": FieldValue.arrayUnion([
                                               {
                                                 "activity": meetActivity,
@@ -338,7 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               }
                                             ])
                                           });
-                                          users.doc(userDocument[0].id).update({
+                                          await users.doc(userDocument[0].id).update({
                                             "meeting": FieldValue.arrayRemove([
                                               {
                                                 "activity": meetActivity,
@@ -348,6 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               }
                                             ])
                                           });
+                                          setState(() {});
                                         },
                                         child: Container(
                                             height: 38,
