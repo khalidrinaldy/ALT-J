@@ -103,11 +103,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 0 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 0 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "M",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 0 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 0 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -125,11 +132,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 1 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 1 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "T",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 1 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 1 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -147,11 +161,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 2 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 2 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "W",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 2 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 2 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -169,11 +190,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 3 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 3 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "T",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 3 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 3 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -191,11 +219,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 4 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 4 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "F",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 4 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 4 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -213,11 +248,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 5 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 5 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "S",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 5 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 5 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -235,11 +277,18 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: _currentDay == 6 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
-                          border: Border(top: BorderSide(color: Color(0xFFFEFACD), width: 0.5))),
+                        color: _currentDay == 6 ? Color(0xFFFFF67D) : Color(0xFFE7B75A),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFFEFACD), width: 0.5),
+                        ),
+                      ),
                       child: Text(
                         "S",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 43, color: _currentDay == 6 ? Color(0xFFE7B75A) : Color(0xFFFFF67D)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 43,
+                          color: _currentDay == 6 ? Color(0xFFE7B75A) : Color(0xFFFFF67D),
+                        ),
                       ),
                     ),
                   ),
@@ -282,7 +331,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         title,
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 31, color: Color(0xFF614B17)),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 31,
+                          color: Color(0xFF614B17),
+                        ),
                       ),
                     ),
                     Container(
@@ -293,19 +346,34 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             width: MediaQuery.of(context).size.width * 0.7,
                             height: 47,
                             decoration: BoxDecoration(
+                              color: Color(0xFFE7B75A),
+                              border: Border.all(
                                 color: Color(0xFFE7B75A),
-                                border: Border.all(color: Color(0xFFE7B75A), width: 1),
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(38), topRight: Radius.circular(38))),
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(38),
+                                topRight: Radius.circular(38),
+                              ),
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
                                   "Jam",
-                                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, color: Color(0xFFFFF67D)),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22,
+                                    color: Color(0xFFFFF67D),
+                                  ),
                                 ),
                                 Text(
                                   "Mata Kuliah",
-                                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, color: Color(0xFFFFF67D)),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 22,
+                                    color: Color(0xFFFFF67D),
+                                  ),
                                 )
                               ],
                             ),
@@ -314,9 +382,13 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             width: MediaQuery.of(context).size.width * 0.7,
                             height: MediaQuery.of(context).size.height * 0.55,
                             decoration: BoxDecoration(
-                                color: Color(0xFFFEFACD),
-                                border: Border.all(color: Color(0xFFE7B75A), width: 1),
-                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(38), bottomRight: Radius.circular(38))),
+                              color: Color(0xFFFEFACD),
+                              border: Border.all(color: Color(0xFFE7B75A), width: 1),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(38),
+                                bottomRight: Radius.circular(38),
+                              ),
+                            ),
                             child: ListView.builder(
                               itemCount: schedules.length,
                               itemBuilder: (context, index) => Container(
@@ -326,7 +398,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   children: [
                                     Text(
                                       "${schedules[index].from} - ${schedules[index].to}",
-                                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Color(0xFF614B17)),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Color(0xFF614B17),
+                                      ),
                                     ),
                                     ConstrainedBox(
                                       constraints: BoxConstraints(minHeight: 18),
@@ -339,7 +415,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                                 width: 150,
                                                 child: Text.rich(TextSpan(
                                                   text: schedules[index].course,
-                                                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Color(0xFF614B17)),
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12,
+                                                    color: Color(0xFF614B17),
+                                                  ),
                                                 )),
                                               ),
                                               GestureDetector(

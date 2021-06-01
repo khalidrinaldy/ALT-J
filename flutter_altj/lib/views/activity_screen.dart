@@ -11,11 +11,7 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
   int _currentIndex = 0;
   final List<String> appBarTitle = ["Schedule", "Tasks", "Meeting"];
-  final List<Widget> _activityChildren = [
-    ScheduleScreen(),
-    TasksScreen(),
-    MeetingScreen()
-  ];
+  final List<Widget> _activityChildren = [ScheduleScreen(), TasksScreen(), MeetingScreen()];
 
   void bottomTapped(int index) {
     setState(() {
@@ -31,7 +27,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
           alignment: Alignment.centerRight,
           child: Text(
             appBarTitle[_currentIndex],
-            style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, color: Color(0xFFD78B0D), fontSize: 24),
+            style: TextStyle(
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w700,
+              color: Color(0xFFD78B0D),
+              fontSize: 24,
+            ),
           ),
         ),
         backgroundColor: Color(0xFFFFF67D),
@@ -50,17 +51,17 @@ class _ActivityScreenState extends State<ActivityScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.schedule),
             label: "Schedule",
-            backgroundColor: _currentIndex == 0 ? Color(0xFFFFD800) : Color(0xFFFEEE75)
+            backgroundColor: _currentIndex == 0 ? Color(0xFFFFD800) : Color(0xFFFEEE75),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment),
             label: "Tasks",
-            backgroundColor: _currentIndex == 1 ? Color(0xFFFFD800) : Color(0xFFFEEE75)
+            backgroundColor: _currentIndex == 1 ? Color(0xFFFFD800) : Color(0xFFFEEE75),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
             label: "Meeting",
-            backgroundColor: _currentIndex == 2 ? Color(0xFFFFD800) : Color(0xFFFEEE75)
+            backgroundColor: _currentIndex == 2 ? Color(0xFFFFD800) : Color(0xFFFEEE75),
           ),
         ],
       ),

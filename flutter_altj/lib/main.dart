@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_altj/routes/routes.dart';
-import 'package:flutter_altj/views/home_screen.dart';
+import 'package:flutter_altj/views/Home%20Screen/home_screen.dart';
 import 'package:flutter_altj/views/login_screen.dart';
 import 'package:flutter_altj/views/register_screen.dart';
 import 'package:flutter_altj/views/splash_screen.dart';

@@ -64,7 +64,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           alignment: Alignment.centerRight,
           child: Text(
             "My Profile",
-            style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, color: Color(0xFFD78B0D), fontSize: 24),
+            style: TextStyle(
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w700,
+              color: Color(0xFFD78B0D),
+              fontSize: 24,
+            ),
           ),
         ),
         backgroundColor: Color(0xFFFFF67D),
@@ -77,18 +82,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               ClipRect(
                 child: Container(
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    heightFactor: 0.6,
-                    child: Image.asset(
-                      "assets/img/bottom_splash_screen.png",
-                    ),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height* 0.25,
+                  child: Image.asset(
+                    "assets/img/bottom_splash_screen.png",
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
             ],
           ),
           FutureBuilder<QuerySnapshot>(
+              //Get User Data
               future: users.where('email', isEqualTo: firebaseAuth.currentUser.email).get(),
               builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -112,12 +117,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 140,
                         alignment: Alignment.bottomRight,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(70),
-                            border: Border.all(
-                              color: Color(0xFFFFF67D),
-                              width: 3,
-                            ),
-                            image: DecorationImage(image: NetworkImage(photoUrl.toString()), fit: BoxFit.fill)),
+                          borderRadius: BorderRadius.circular(70),
+                          border: Border.all(
+                            color: Color(0xFFFFF67D),
+                            width: 3,
+                          ),
+                          image: DecorationImage(image: NetworkImage(photoUrl.toString()), fit: BoxFit.fill),
+                        ),
                         child: GestureDetector(
                           onTap: () => uploadPhoto(context),
                           child: Container(
@@ -125,9 +131,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 30,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Color(0xFFD78B0D),
-                                  boxShadow: [BoxShadow(blurRadius: 4, offset: Offset(0, 0), color: Colors.black.withOpacity(0.25))]),
+                                borderRadius: BorderRadius.circular(15),
+                                color: Color(0xFFD78B0D),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4,
+                                    offset: Offset(0, 0),
+                                    color: Colors.black.withOpacity(0.25),
+                                  ),
+                                ],
+                              ),
                               child: Icon(
                                 Icons.photo_camera_rounded,
                                 color: Color(0xFFFEFACD),
@@ -138,7 +151,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       margin: EdgeInsets.only(top: 10),
                       child: Text(
                         userDocument["username"].toString(),
-                        style: TextStyle(fontSize: 24, fontFamily: "Montserrat", fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                     Container(
@@ -157,7 +174,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       margin: EdgeInsets.only(top: 10),
                       child: Text(
                         userDocument["email"].toString(),
-                        style: TextStyle(fontSize: 18, fontFamily: "Montserrat", fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                     Container(
@@ -165,21 +186,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 80,
                       margin: EdgeInsets.only(top: 150, left: 25, right: 25),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(52),
-                          boxShadow: [BoxShadow(offset: Offset(0, 4), blurRadius: 4, color: Colors.black.withOpacity(0.25))]),
-                      child: ElevatedButton(
-                        onPressed: () async{
-                          await firebaseAuth.signOut().then((value) => {Navigator.pushReplacementNamed(context, '/login')});
-                        },
-                        child: Text(
-                          "Log Out",
-                          style: TextStyle(fontFamily: "Montserrat", fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xFFFFFDF9)),
-                        ),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
-                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(52)))
-                        )
+                        borderRadius: BorderRadius.circular(52),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 4),
+                            blurRadius: 4,
+                            color: Colors.black.withOpacity(0.25),
+                          ),
+                        ],
                       ),
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            await firebaseAuth.signOut().then(
+                                  (value) => {
+                                    Navigator.pushReplacementNamed(context, '/login'),
+                                  },
+                                );
+                          },
+                          child: Text(
+                            "Log Out",
+                            style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFFFFDF9),
+                            ),
+                          ),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Color(0xFFEE9B0F)),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(52),
+                                ),
+                              ))),
                     )
                   ],
                 );

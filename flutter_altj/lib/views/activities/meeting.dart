@@ -40,65 +40,80 @@ class _MeetingScreenState extends State<MeetingScreen> {
             meets.sort((a, b) => a.schedule.compareTo(b.schedule));
             meets = meets.where((item) => item.schedule.seconds > Timestamp.fromDate(DateTime.now()).seconds).toList();
             return ListView.builder(
-              itemCount: meets.length,
-              itemBuilder: (context, index) => Container(
-                margin: EdgeInsets.only(left: 24, right: 24, top: 15),
-                width: 364,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color(0xFFE7B75A),
-                    ),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ConstrainedBox(
-                      constraints: BoxConstraints(minHeight: 66),
-                      child: Container(
-                        width: 364,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFE7B75A),
-                            border: Border.all(
-                              color: Color(0xFFE7B75A),
-                            ),
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(left: 20),
-                          child: Text.rich(TextSpan(text: meets[index].activity, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30))),
+                itemCount: meets.length,
+                itemBuilder: (context, index) => Container(
+                      margin: EdgeInsets.only(left: 24, right: 24, top: 15),
+                      width: 364,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xFFE7B75A),
                         ),
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                    ),
-                    Container(
-                        width: 364,
-                        height: 27,
-                        padding: EdgeInsets.only(left: 20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Color(0xFFE7B75A),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minHeight: 66,
+                            ),
+                            child: Container(
+                              width: 364,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFE7B75A),
+                                border: Border.all(
+                                  color: Color(0xFFE7B75A),
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(15),
+                                  topRight: Radius.circular(15),
+                                ),
+                              ),
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(left: 20),
+                                child: Text.rich(
+                                  TextSpan(
+                                    text: meets[index].activity,
+                                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15)),
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              DateFormat("dd/MM/yyyy").format(meets[index].schedule.toDate()).toString(),
-                              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-                            ),
-                            Container(
-                              width: 60,
-                            ),
-                            Text(
-                              DateFormat("kk:mm").format(meets[index].schedule.toDate()).toString(),
-                              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
-                            ),
-                          ],
-                        ))
-                  ],
-                ),
-              )
-            );
+                          Container(
+                              width: 364,
+                              height: 27,
+                              padding: EdgeInsets.only(left: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Color(0xFFE7B75A),
+                                ),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    DateFormat("dd/MM/yyyy").format(meets[index].schedule.toDate()).toString(),
+                                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+                                  ),
+                                  Container(
+                                    width: 60,
+                                  ),
+                                  Text(
+                                    DateFormat("kk:mm").format(meets[index].schedule.toDate()).toString(),
+                                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13),
+                                  ),
+                                ],
+                              ))
+                        ],
+                      ),
+                    ));
           }),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFE7B75A),

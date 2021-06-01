@@ -3,7 +3,7 @@ import 'package:flutter_altj/views/activities/add_meeting.dart';
 import 'package:flutter_altj/views/activities/add_schedule.dart';
 import 'package:flutter_altj/views/activities/add_tasks.dart';
 import 'package:flutter_altj/views/activity_screen.dart';
-import 'package:flutter_altj/views/home_screen.dart';
+import 'package:flutter_altj/views/Home%20Screen/home_screen.dart';
 import 'package:flutter_altj/views/login_screen.dart';
 import 'package:flutter_altj/views/profile_screen.dart';
 import 'package:flutter_altj/views/register_screen.dart';

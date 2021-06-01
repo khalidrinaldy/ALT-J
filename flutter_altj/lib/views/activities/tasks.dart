@@ -19,6 +19,7 @@ class _TasksScreenState extends State<TasksScreen> {
     super.initState();
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +42,11 @@ class _TasksScreenState extends State<TasksScreen> {
 
             List<Task> tasks = [];
             for (var t in userDocument["tasks"]) {
-              Task task = Task(t["task_name"], t["course"], t["deadline"], t["bool"]);
+              Task task = Task(t["task_name"], t["course"], t["deadline"], t["check"]);
               tasks.add(task);
             }
-            
-            tasks.sort((a,b) => a.deadline.compareTo(b.deadline));
+
+            tasks.sort((a, b) => a.deadline.compareTo(b.deadline));
             tasks = tasks.where((item) => item.deadline.seconds > Timestamp.fromDate(DateTime.now()).seconds).toList();
 
             return ListView.builder(
@@ -54,7 +55,10 @@ class _TasksScreenState extends State<TasksScreen> {
                 height: 120,
                 width: 350,
                 margin: EdgeInsets.only(left: 25, right: 25, top: 15),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Color(0xFFE7B75A)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color(0xFFE7B75A),
+                ),
                 child: Row(
                   children: [
                     Container(
@@ -62,7 +66,10 @@ class _TasksScreenState extends State<TasksScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Due Date", style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 18)),
+                          Text(
+                            "Due Date",
+                            style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w700, fontSize: 18),
+                          ),
                           Stack(
                             alignment: Alignment.center,
                             children: [
@@ -75,12 +82,19 @@ class _TasksScreenState extends State<TasksScreen> {
                                 margin: EdgeInsets.only(top: 20),
                                 child: Text(
                                   DateFormat('dd').format(tasks[index].deadline.toDate()).toString(),
-                                  style: TextStyle(fontFamily: "Montserrat", fontSize: 16, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               )
                             ],
                           ),
-                          Text(DateFormat('MMM').format(tasks[index].deadline.toDate()).toString(), style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w500, fontSize: 16)),
+                          Text(
+                            DateFormat('MMM').format(tasks[index].deadline.toDate()).toString(),
+                            style: TextStyle(fontFamily: "Montserrat", fontWeight: FontWeight.w500, fontSize: 16),
+                          ),
                         ],
                       ),
                     ),
@@ -88,7 +102,12 @@ class _TasksScreenState extends State<TasksScreen> {
                       height: 120,
                       width: 0,
                       margin: EdgeInsets.only(left: 22),
-                      decoration: BoxDecoration(border: Border.all(width: 2, color: Color(0xFFFEFACD))),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: Color(0xFFFEFACD),
+                        ),
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 22),
