@@ -199,7 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onPressed: () async {
                             await firebaseAuth.signOut().then(
                                   (value) => {
-                                    Navigator.pushReplacementNamed(context, '/login'),
+                                    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false)
                                   },
                                 );
                           },
